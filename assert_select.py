@@ -13,7 +13,7 @@ class Page(object):
         if filename:
             self.root = html.parse(filename).getroot()
         else:
-            self.root = html.fromstring(string).getroot()
+            self.root = html.fromstring(content).getroot()
 
     def css_select(self, selector):
         '''
