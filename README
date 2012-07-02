@@ -1,0 +1,8 @@
+assert-select
+=============
+
+A convenience library for making assertions about the CSS selectors present
+in a rendered template.  Concept lifted directly from Rails.  Code paraphrased
+from Rails.
+
+.. _github: http://github.com/aroberts/assert-select
