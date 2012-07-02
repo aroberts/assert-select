@@ -17,7 +17,7 @@ except ImportError:
 
 setup(
     name='assert-select',
-    version='0.5',
+    version='0.6',
     url='http://github.com/aroberts/assert-select',
     license='BSD',
     author='Andrew Roberts',
