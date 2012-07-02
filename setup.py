@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 assert-select
-========
+=============
 
 A convenience library for making assertions about the CSS selectors present
 in a rendered template.  Concept lifted directly from Rails.  Code paraphrased
@@ -16,7 +16,7 @@ except ImportError:
 
 
 setup(
-    name='assert_select',
+    name='assert-select',
     version='0.5',
     url='http://github.com/aroberts/assert-select',
     license='BSD',
