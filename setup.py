@@ -4,7 +4,8 @@ assert-select
 ========
 
 A convenience library for making assertions about the CSS selectors present
-in a rendered template.  Concept lifted directly from Rails.
+in a rendered template.  Concept lifted directly from Rails.  Code paraphrased
+from Rails.
 
 .. _github: http://github.com/aroberts/assert-select
 """
@@ -16,16 +17,16 @@ except ImportError:
 
 setup(
     name='assert_select',
-    version='0.5-dev',
+    version='0.5',
     url='http://github.com/aroberts/assert-select',
     license='BSD',
     author='Andrew Roberts',
     author_email='adroberts@gmail.com',
     description='Make assertions about CSS selectors',
     long_description=__doc__,
-    packages=['assert_select',]
+    py_modules=['assert_select'],
     include_package_data=True,
-    install_requires=['lxml>=2.3',]
+    install_requires=['lxml>=2.3',],
     zip_safe=False,
     platforms='any'
 )
