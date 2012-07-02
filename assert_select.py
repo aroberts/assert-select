@@ -53,9 +53,9 @@ class Page(object):
         equality_type = type(equality)
         if equality_type == bool:
             if equality:
-                tests['count'] = 0
-            else:
                 tests['minimum'] = 1
+            else:
+                tests['count'] = 0
         elif equality_type == int:
             tests['count'] = equality
         elif equality_type in (str, re_type):
@@ -85,7 +85,7 @@ class Page(object):
         else:
             filtered_elements = elements
 
-        if not filtered_elements:
+        if not filtered_elements and elements:
             message = message or "%s expected, but was %s" % (
                 tests['text'],
                 ''.join([e.text_content() for e in elements])
@@ -96,17 +96,19 @@ class Page(object):
         count = tests.get('count', None)
         minimum = tests.get('minimum', None)
         maximum = tests.get('maximum', None)
-        if count:
+        print "count min max", count, minimum, maximum
+
+        if not count == None:
             message = message or count_message % (count, length)
             assert count == length, message
         else:
-            if minimum:
+            if not minimum == None:
                 message = message or count_message % (
                     "at least %s" % minimum,
                     length
                 )
                 assert length >= minimum, message
-            if maximum:
+            if not maximum == None:
                 message = message or count_message % (
                     "at most %s" % maximum,
                     length

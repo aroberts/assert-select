@@ -63,6 +63,19 @@ class TestAssertSelect(object):
         nodes = self.string.assert_select("strong", "public")
         assert_equals(len(nodes), 1)
 
+    def test_as_true(self):
+        self.string.assert_select("div.main p", True)
+
+    def test_as_count_0(self):
+        try:
+            self.string.assert_select("div.main p", 0)
+        except AssertionError:
+            return
+        assert 0, "Should have raised exception"
+
+    def test_as_false(self):
+        self.string.assert_select("div.main p a", False)
+
     def test_as_regex(self):
         nodes = self.fragment.assert_select("strong", re.compile("(public|private)"))
         assert_equals(len(nodes), 2)
