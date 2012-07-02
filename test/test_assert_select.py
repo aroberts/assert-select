@@ -10,6 +10,9 @@ class TestAssertSelect(object):
         self.full_page = Page(filename="test/test.html")
         self.fragment = Page(filename="test/fragment.html")
 
+        with file("test/fragment.html") as f:
+            self.string = Page(content=f.read())
+
     def test_page_init_full_page(self):
         assert self.full_page
 
@@ -21,6 +24,10 @@ class TestAssertSelect(object):
         assert_equals(len(nodes), 2)
         for node in nodes:
             assert_equals(node.tag, "strong")
+
+    def test_assert_select_string_defaults(self):
+        strongs = self.string.assert_select("strong")
+        assert_equals(len(strongs), 2)
 
     def test_assert_select_defaults(self):
         strongs = self.fragment.assert_select("strong")
@@ -52,7 +59,11 @@ class TestAssertSelect(object):
         nodes = self.fragment.assert_select("strong", "public")
         assert_equals(len(nodes), 1)
 
-    def test_as_text(self):
+    def test_as_text_via_string(self):
+        nodes = self.string.assert_select("strong", "public")
+        assert_equals(len(nodes), 1)
+
+    def test_as_regex(self):
         nodes = self.fragment.assert_select("strong", re.compile("(public|private)"))
         assert_equals(len(nodes), 2)
 
