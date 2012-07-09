@@ -1,4 +1,5 @@
 from lxml import html
+from lxml import etree
 import re
 
 re_type = type(re.compile(''))
@@ -14,6 +15,9 @@ class Page(object):
             self.root = html.parse(filename).getroot()
         else:
             self.root = html.fromstring(content)
+
+    def __repr__(self):
+        return etree.tostring(self.root, pretty_print = True)
 
     def css_select(self, selector):
         '''
