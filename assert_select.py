@@ -96,7 +96,6 @@ class Page(object):
         count = tests.get('count', None)
         minimum = tests.get('minimum', None)
         maximum = tests.get('maximum', None)
-        print "count min max", count, minimum, maximum
 
         if not count == None:
             message = message or count_message % (count, length)
