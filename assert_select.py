@@ -17,7 +17,7 @@ class Page(object):
             self.root = html.fromstring(content)
 
     def __repr__(self):
-        return etree.tostring(self.root, pretty_print = True)
+        return etree.tostring(self.root, method='html', pretty_print=True)
 
     def css_select(self, selector):
         '''

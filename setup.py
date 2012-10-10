@@ -17,7 +17,7 @@ except ImportError:
 
 setup(
     name='assert-select',
-    version='0.9',
+    version='0.10',
     url='http://github.com/aroberts/assert-select',
     license='BSD',
     author='Andrew Roberts',
@@ -26,7 +26,7 @@ setup(
     long_description=__doc__,
     py_modules=['assert_select'],
     include_package_data=True,
-    install_requires=['lxml>=2.3',],
+    install_requires=['lxml>=2.3,<3.0',],
     zip_safe=False,
     platforms='any'
 )

@@ -1,0 +1,7 @@
+0.10 Wednesday, Oct 10, 2012
+====
+
+ * Updated lxml dependency to prevent issues with 3.0
+
+ * added CHANGES file
+
