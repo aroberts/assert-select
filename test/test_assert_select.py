@@ -23,7 +23,8 @@ class TestAssertSelect(object):
         nodes = self.fragment.css_select("div.secondary strong")
         assert_equals(len(nodes), 2)
         for node in nodes:
-            assert_equals(node.tag, "strong")
+            print type(node)
+            assert_equals(node.name, "strong")
 
     def test_assert_select_string_defaults(self):
         strongs = self.string.assert_select("strong")

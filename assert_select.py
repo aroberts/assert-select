@@ -1,5 +1,5 @@
-from lxml import html
-from lxml import etree
+from bs4 import BeautifulSoup
+
 import re
 
 re_type = type(re.compile(''))
@@ -12,19 +12,18 @@ class Page(object):
 
     def __init__(self, content=None, filename=None):
         if filename:
-            self.root = html.parse(filename).getroot()
-        else:
-            self.root = html.fromstring(content)
+            content = open(filename)
+        self.doc = BeautifulSoup(content, 'html5lib')
 
     def __repr__(self):
-        return etree.tostring(self.root, method='html', pretty_print=True)
+        return self.doc.prettify(formatter='html')
 
     def css_select(self, selector):
         '''
         Takes a string as a CSS selector, and returns all the elements
         found by the selector.
         '''
-        return self.root.cssselect(selector)
+        return self.doc.select(selector)
 
     def assert_select(self, selector, equality=True, message=None, **tests):
         '''
@@ -81,10 +80,10 @@ class Page(object):
             match_with = tests['text']
             if type(match_with) == str:
                 filtered_elements = [e for e in elements
-                                     if match_with in e.text_content()]
+                                     if match_with in e.string]
             else:
                 filtered_elements = [e for e in elements
-                                     if match_with.match(e.text_content())]
+                                     if match_with.match(e.string)]
 
         else:
             filtered_elements = elements
@@ -92,7 +91,7 @@ class Page(object):
         if not filtered_elements and elements:
             message = message or "%s expected, but was %s" % (
                 tests['text'],
-                ''.join([e.text_content() for e in elements])
+                ''.join([e.string for e in elements])
             )
 
         count_message = "%s elements expected, found %s"
