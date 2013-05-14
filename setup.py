@@ -26,7 +26,7 @@ setup(
     long_description=__doc__,
     py_modules=['assert_select'],
     include_package_data=True,
-    install_requires=['beautifulsoup4',
+    install_requires=['beautifulsoup4==4.1.3',
                       'html5lib',],
     zip_safe=False,
     platforms='any'
