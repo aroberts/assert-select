@@ -1,8 +1,13 @@
+1.0.1  Tuesday, May 14, 2013
+============================
+ 
+ * Requires BeautifulSoup 4.1.3 - 4.2 breaks some things.
+
+
 1.0.0  Wednesday, Oct 10, 2012
 ============================
 
  * Migrated to BeautifulSoup and html5lib
-
  * Added html-safe formatting to Page's __repr__
 
 
@@ -10,6 +15,5 @@
 ============================
 
  * Updated lxml dependency to prevent issues with 3.0
-
  * Added CHANGES file
 
